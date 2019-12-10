@@ -117,8 +117,8 @@ Piece Piezas::gameState() {
       }
     }
   }
-  cout << "MaxX: " << MaxX << "/n";
-  cout << "MaxO: " << MaxO << "/n";
+  cout << "MaxX: " << MaxX << "\n";
+  cout << "MaxO: " << MaxO << "\n";
   /* Checking for Vertical Win */
   for (int i = 0; i < BOARD_COLS; i++) {
     int curX = 1;
@@ -142,8 +142,8 @@ Piece Piezas::gameState() {
       }
     }
   }
-  cout << "MaxX: " << MaxX << "/n";
-  cout << "MaxO: " << MaxO << "/n";
+  cout << "MaxX: " << MaxX << "\n";
+  cout << "MaxO: " << MaxO << "\n";
   if (MaxO == MaxX) {
     return Blank;
   } else if (MaxX > MaxO) {

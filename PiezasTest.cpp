@@ -165,7 +165,7 @@ TEST(PiezasTest, getPieceOverFlow) {
 /***********************************
  * gameState() Testing
  **********************************/
-
+// Seg Faults
 TEST(PiezasTest, gameRunningBlank) {
   Piezas Board;
   ASSERT_EQ(Board.gameState(), Invalid);

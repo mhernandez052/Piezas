@@ -23,7 +23,7 @@ Piezas::Piezas() {
   turn = X;
   Piece init_piece = Blank;
   std::vector<std::vector<Piece>> init_board(
-      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, init_piece));
+      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
   board = init_board;
 }
 
@@ -59,6 +59,7 @@ Piece Piezas::dropPiece(int column) {
       return board[i][column];
     }
   }
+  (turn == X) ? turn = O : turn = X;
   return Blank;
 }
 

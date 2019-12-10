@@ -57,6 +57,24 @@ TEST(PiezasTest, resetTestingFull) {
   Board.reset();
   ASSERT_EQ(Board.dropPiece(3), X);
 }
+
+TEST(PiezasTest, resetOnWinner) {
+  Piezas Board;
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(2);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.reset();
+  ASSERT_EQ(Board.pieceAt(0,0), Blank);
+}
 /***********************************
  *  dropPiece() Testing
  **********************************/
@@ -106,4 +124,164 @@ TEST(PiezasTest, checkOutOfBoundsTurnSkip) {
 TEST(PiezasTest, getPieceStart) {
   Piezas Board;
   ASSERT_EQ(Board.pieceAt(0, 2), Blank);
+}
+
+TEST(PiezasTest, getPieceStartReset) {
+  Piezas Board;
+  Board.dropPiece(3);
+  Board.reset();
+  ASSERT_EQ(Board.pieceAt(0, 3), Blank);
+}
+
+TEST(PiezasTest, getPieceX) {
+  Piezas Board;
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.pieceAt(0, 3), X);
+}
+
+TEST(PiezasTest, getPieceO) {
+  Piezas Board;
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.pieceAt(1, 3), O);
+}
+
+TEST(PiezasTest, getPieceOutOfBounds) {
+  Piezas Board;
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.pieceAt(5, 0), Invalid);
+}
+
+TEST(PiezasTest, getPieceOverFlow) {
+  Piezas Board;
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.pieceAt(3, 3), X);
+}
+
+/***********************************
+ * gameState() Testing
+ **********************************/
+
+TEST(PiezasTest, gameRunningBlank) {
+  Piezas Board;
+  ASSERT_EQ(Board.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gameRunningNormal) {
+  Piezas Board;
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gameStateWinThenReset) {
+  Piezas Board;
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(2);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.reset();
+  ASSERT_EQ(Board.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gameTieLength1) {
+  Piezas Board;
+  // Multiple Ties of Length 1
+  Board.dropPiece(0);
+  Board.dropPiece(0);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(2);
+  Board.dropPiece(2);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.gameState(), Blank);
+}
+
+TEST(PiezasTest, gameTieLength2) {
+  // Multiple Ties of Length 2
+  Piezas Board;
+  Board.dropPiece(2);
+  Board.dropPiece(0);
+  Board.dropPiece(3);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(0);
+  Board.dropPiece(2);
+  Board.dropPiece(1);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.gameState(), Blank);
+}
+
+
+TEST(PiezasTest, verticalWinXLength3) {
+  Piezas Board;
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(2);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.gameState(), X);
+}
+
+TEST(PiezasTest, horizontalWinOLength4) {
+  Piezas Board;
+  Board.dropPiece(0);
+  Board.dropPiece(0);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(2);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.gameState(), O);
+}
+
+TEST(PiezasTest, horizontalWinOLength3) {
+  Piezas Board;
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
+  Board.dropPiece(0);
+  Board.dropPiece(2);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  Board.dropPiece(3);
+  Board.dropPiece(2);
+  Board.dropPiece(3);
+  ASSERT_EQ(Board.gameState(), O);
 }

@@ -110,7 +110,7 @@ Piece Piezas::gameState() {
       } else {
         curX = 1;
       }
-      if (board[i][j] == board[i][j + 1] && (board[i][j] == O)) {
+      if ((board[i][j] == board[i][j + 1]) && (board[i][j] == O)) {
         curO++;
       } else {
         curO = 1;

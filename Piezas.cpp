@@ -49,13 +49,13 @@ void Piezas::reset() {
  **/
 Piece Piezas::dropPiece(int column) {
   if (column > BOARD_ROWS || column < 0) {
-    turn = (turn == X) ? turn = O : turn = X;
+    (turn == X) ? turn = O : turn = X;
     return Invalid;
   }
   for (int i = 0; i < (int)BOARD_ROWS; i++) {
     if (board[i][column] == Blank) {
       board[i][column] = turn;
-      turn = (turn == X) ? turn = O : turn = X;
+      (turn == X) ? turn = O : turn = X;
       return board[i][column];
     }
   }
@@ -83,9 +83,8 @@ Piece Piezas::pieceAt(int row, int column) {
  * line, it is a tie.
  **/
 Piece Piezas::gameState() {
-  bool gameRunning = 0;
   for (int i = 0; i < BOARD_ROWS; i++) {
-    for (int j = 0; j < board[i].size(); j++) {
+    for (int j = 0; j < (int)board[i].size(); j++) {
       if (board[i][j] == Blank) {
         return Invalid;
       }
@@ -96,7 +95,7 @@ Piece Piezas::gameState() {
   for (int i = 0; i < BOARD_ROWS; i++) {
     int curX = 1;
     int curO = 1;
-    for (int j = 0; j < board[i].size() - 1; j++) {
+    for (int j = 0; j < (int)board[i].size() - 1; j++) {
       if (curO > MaxO) {
         MaxO = curO;
       }

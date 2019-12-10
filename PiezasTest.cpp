@@ -108,7 +108,7 @@ TEST(PiezasTest, dropPieceOverflowSkipTurn) {
 
 TEST(PiezasTest, dropPieceOutOfBoundsCol) {
   Piezas Board;
-  ASSERT_EQ(Board.dropPiece(3), Invalid);
+  ASSERT_EQ(Board.dropPiece(4), Invalid);
 }
 
 TEST(PiezasTest, checkOutOfBoundsTurnSkip) {

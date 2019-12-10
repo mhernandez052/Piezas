@@ -115,28 +115,28 @@ Piece Piezas::gameState() {
     }
   }
   /* Checking for Vertical Win */
-  // for (int i = 0; i < BOARD_COLS; i++) {
-  //   int curX = 1;
-  //   int curO = 1;
-  //   for (int j = 0; j < BOARD_ROWS - 1; j++) {
-  //     if (curO > MaxO) {
-  //       MaxO = curO;
-  //     }
-  //     if (curX > MaxX) {
-  //       MaxX = curX;
-  //     }
-  //     if ((board[i][j] == board[i][j + 1]) && board[i][j] == X) {
-  //       ++curX;
-  //     } else {
-  //       curX = 1;
-  //     }
-  //     if (board[i][j] == board[i][j + 1] && board[i][j] == O) {
-  //       ++curO;
-  //     } else {
-  //       curO = 1;
-  //     }
-  //   }
-  // }
+  for (int i = 0; i < BOARD_COLS; i++) {
+    int curX = 1;
+    int curO = 1;
+    for (int j = 0; j < BOARD_ROWS - 1; j++) {
+      if (curO > MaxO) {
+        MaxO = curO;
+      }
+      if (curX > MaxX) {
+        MaxX = curX;
+      }
+      if ((board[j][i] == board[j][i+1]) && board[j][i] == X) {
+        ++curX;
+      } else {
+        curX = 1;
+      }
+      if (board[j][i] == board[j][i+1] && board[j][i] == O) {
+        ++curO;
+      } else {
+        curO = 1;
+      }
+    }
+  }
 
   return MaxX == MaxO ? Blank : (MaxX > MaxO ? X : O);
 }

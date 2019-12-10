@@ -153,14 +153,14 @@ TEST(PiezasTest, getPieceOutOfBounds) {
   ASSERT_EQ(Board.pieceAt(5, 0), Invalid);
 }
 
-TEST(PiezasTest, getPieceOverFlow) {
-  Piezas Board;
-  Board.dropPiece(3);
-  Board.dropPiece(3);
-  Board.dropPiece(3);
-  Board.dropPiece(3);
-  ASSERT_EQ(Board.pieceAt(3, 3), X);
-}
+// TEST(PiezasTest, getPieceOverFlow) {
+//   Piezas Board;
+//   Board.dropPiece(3);
+//   Board.dropPiece(3);
+//   Board.dropPiece(3);
+//   Board.dropPiece(3);
+//   ASSERT_EQ(Board.pieceAt(3, 3), X);
+// }
 
 /***********************************
  * gameState() Testing

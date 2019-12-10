@@ -137,6 +137,14 @@ Piece Piezas::gameState() {
       }
     }
   }
-
-  return MaxX == MaxO ? Blank : (MaxX > MaxO ? X : O);
+  if (MaxO == MaxX) {
+    return Blank;
+  }
+  else if (MaxX > MaxO) {
+    return X;
+  }
+  else if (MaxX < MaxO) {
+    return O;
+  }
+  // return MaxX == MaxO ? Blank : (MaxX > MaxO ? X : O);
 }

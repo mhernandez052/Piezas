@@ -21,7 +21,6 @@
  **/
 Piezas::Piezas() {
   turn = X;
-  Piece init_piece = Blank;
   std::vector<std::vector<Piece>> init_board(
       BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
   board = init_board;
@@ -33,9 +32,8 @@ Piezas::Piezas() {
  **/
 void Piezas::reset() {
   turn = X;
-  Piece init_piece = Blank;
   std::vector<std::vector<Piece>> init_board(
-      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, init_piece));
+      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
   board = init_board;
 }
 

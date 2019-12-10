@@ -13,7 +13,11 @@ protected:
   virtual void TearDown() {} // clean up after each test, (before destructor)
 };
 
-TEST(PiezasTest, sanityCheck) { ASSERT_TRUE(true); }
+TEST(PiezasTest, sanityCheck) {
+
+  /* Initial Test */
+  ASSERT_TRUE(true);
+}
 /***********************************
  *  reset() Testing
  **********************************/
@@ -23,7 +27,6 @@ TEST(PiezasTest, resetTestingStart) {
   Board.reset();
   ASSERT_EQ(Board.dropPiece(0), X);
 }
-
 
 TEST(PiezasTest, resetTestingSimple) {
   Piezas Board;
@@ -37,7 +40,7 @@ TEST(PiezasTest, resetTestingSimple) {
   ASSERT_EQ(Board.dropPiece(0), X);
 }
 
-TEST(PiezasTest, resetTestingSimple) {
+TEST(PiezasTest, resetTestingFull) {
   Piezas Board;
   Board.dropPiece(0);
   Board.dropPiece(0);
@@ -102,6 +105,5 @@ TEST(PiezasTest, checkOutOfBoundsTurnSkip) {
 
 TEST(PiezasTest, getPieceStart) {
   Piezas Board;
-  ASSERT_EQ(Board.pieceAt(0,2), Blank);
+  ASSERT_EQ(Board.pieceAt(0, 2), Blank);
 }
-

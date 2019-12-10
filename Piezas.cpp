@@ -103,12 +103,12 @@ Piece Piezas::gameState() {
         MaxX = curX;
       }
       if ((board[i][j] == board[i][j + 1]) && (board[i][j] == X)) {
-        ++curX;
+        curX++;
       } else {
         curX = 1;
       }
       if (board[i][j] == board[i][j + 1] && (board[i][j] == O)) {
-        ++curO;
+        curO++;
       } else {
         curO = 1;
       }
@@ -125,13 +125,13 @@ Piece Piezas::gameState() {
       if (curX > MaxX) {
         MaxX = curX;
       }
-      if ((board[j][i] == board[j][i+1]) && board[j][i] == X) {
-        ++curX;
+      if ((board[j][i] == board[j][i + 1]) && board[j][i] == X) {
+        curX++;
       } else {
         curX = 1;
       }
-      if (board[j][i] == board[j][i+1] && board[j][i] == O) {
-        ++curO;
+      if (board[j][i] == board[j][i + 1] && board[j][i] == O) {
+        curO++;
       } else {
         curO = 1;
       }

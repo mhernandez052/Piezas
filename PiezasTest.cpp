@@ -197,6 +197,7 @@ TEST(PiezasTest, gameStateWinThenReset) {
   ASSERT_EQ(Board.gameState(), Invalid);
 }
 
+// Seg Fault
 TEST(PiezasTest, gameTieLength1) {
   Piezas Board;
   // Multiple Ties of Length 1

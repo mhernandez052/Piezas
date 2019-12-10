@@ -66,7 +66,7 @@ Piece Piezas::dropPiece(int column) {
  * are no pieces there, or Invalid if the coordinates are out of bounds
  **/
 Piece Piezas::pieceAt(int row, int column) {
-  if (row < 0 || column < 0 || row > BOARD_ROWS || column > BOARD_COLS) {
+  if (row < 0 || column < 0 || row >= BOARD_ROWS || column >= BOARD_COLS) {
     return Invalid;
   }
   return board[row][column];

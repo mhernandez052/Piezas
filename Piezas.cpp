@@ -131,7 +131,7 @@ Piece Piezas::gameState() {
   for (int i = 0; i < BOARD_COLS; i++) {
     int curX = 1;
     int curO = 1;
-    for (int j = 0; j < BOARD_ROWS; j++) {
+    for (int j = 0; j < BOARD_ROWS - 1; j++) {
       if (board[j][i] == board[j][i+1]) {
         if (board[j][i] == X) {
           curX++;

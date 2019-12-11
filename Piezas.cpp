@@ -98,21 +98,13 @@ Piece Piezas::gameState() {
     }
   }
   /* Checking for Horizontal Win */
-  cout << "BS: " <<   board.size() << " [i]: " << board[0].size() << "\n";
+  // cout << "BS: " <<   board.size() << " [i]: " << board[0].size() << "\n";
   int MaxX = 1;
   int MaxO = 1;
   for (int i = 0; i < BOARD_ROWS; i++) {
     int curX = 1;
     int curO = 1;
-    for (int j = 0; j < BOARD_COLS; j++) {
-      if (curX > MaxX) {
-        cout << "XMax Change I: " << i << " " << "J: " << j << "\n"; 
-        MaxX = curX;
-      }
-      if (curO > MaxO) {
-        cout << "OMax change I: " << i << " " << "J: " << j << "\n"; 
-        MaxO = curO;
-      }
+    for (int j = 0; j < BOARD_COLS - 1; j++) {
       if (board[i][j] == board[i][j+1]) {
         if (board[i][j] == X) {
           curX++;
@@ -123,21 +115,23 @@ Piece Piezas::gameState() {
           curX = 1;
         }
       }
+      if (curX > MaxX) {
+        // cout << "XMax Change I: " << i << " " << "J: " << j << "\n"; 
+        MaxX = curX;
+      }
+      if (curO > MaxO) {
+        // cout << "OMax change I: " << i << " " << "J: " << j << "\n"; 
+        MaxO = curO;
+      }
     }
   }
-  cout << "MaxX: " << MaxX << "\n";
-  cout << "MaxO: " << MaxO << "\n";
+  cout << "HMaxX: " << MaxX << "\n";
+  cout << "HMaxO: " << MaxO << "\n";
   /* Checking for Vertical Win */
   for (int i = 0; i < BOARD_COLS; i++) {
     int curX = 1;
     int curO = 1;
-    for (int j = 0; j < BOARD_ROWS; j++) {
-      if (curO > MaxO) {
-        MaxO = curO;
-      }
-      if (curX > MaxX) {
-        MaxX = curX;
-      }
+    for (int j = 0; j < BOARD_ROWS - 1; j++) {
       if ((board[j][i] == board[j][i + 1]) && board[j][i] == X) {
         curX++;
       } else {
@@ -148,10 +142,16 @@ Piece Piezas::gameState() {
       } else {
         curO = 1;
       }
+      if (curO > MaxO) {
+        MaxO = curO;
+      }
+      if (curX > MaxX) {
+        MaxX = curX;
+      }
     }
   }
-  // cout << "MaxX: " << MaxX << "\n";
-  // cout << "MaxO: " << MaxO << "\n";
+  cout << "VMaxX: " << MaxX << "\n";
+  cout << "VMaxO: " << MaxO << "\n";
   if (MaxO == MaxX) {
     return Blank;
   } else if (MaxX > MaxO) {

@@ -29,7 +29,8 @@ Piezas::Piezas() {
   // board = init_board;
 
   turn = X;
-  board = std::vector<std::vector<Piece>> (BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
+  board = std::vector<std::vector<Piece>>(
+      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
   // board = init_board;
 }
 
@@ -92,7 +93,6 @@ Piece Piezas::gameState() {
   for (int i = 0; i < BOARD_ROWS; i++) {
     for (int j = 0; j < BOARD_COLS; j++) {
       if (board[i][j] == Blank) {
-        cout << "Blank Piece Found\n";
         return Invalid;
       }
     }
@@ -110,15 +110,14 @@ Piece Piezas::gameState() {
       if (curX > MaxX) {
         MaxX = curX;
       }
-      if ((board[i][j] == board[i][j + 1]) && (board[i][j] == X)) {
-        curX++;
-      } else {
-        curX = 1;
-      }
-      if ((board[i][j] == board[i][j + 1]) && (board[i][j] == O)) {
-        curO++;
-      } else {
-        curO = 1;
+      if (board[i][j] == board[i][j + 1]) {
+        if (board[i][j] == X) {
+          curX++;
+          curO = 1;
+        } else if (board[i][j] == O) {
+          curO++;
+          curX = 1;
+        }
       }
     }
   }

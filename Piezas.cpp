@@ -105,27 +105,26 @@ Piece Piezas::gameState() {
     int curO = 1;
     for (int j = 0; j < BOARD_COLS - 1; j++) {
       if (curX > MaxX) {
+        cout << "XMax Change I: " << i << " " << "J: " << j << "\n"; 
         MaxX = curX;
       }
       if (curO > MaxO) {
+        cout << "OMax change I: " << i << " " << "J: " << j << "\n"; 
         MaxO = curO;
       }
-      if ((board[i][j] == board[i][j+1]) && board[i][j] == X) {
-        curX++;
-      }
-      else if (board[i][j] == X && board[i][j+1] == O) {
-        curX = 1;
-      }
-      if (board[i][j] == board[i][j+1] && board[i][j] == O) {
-        curO++;
-      }
-      else if (board[i][j] == O && board[i][j+1] == X) {
-        curX = 1;
+      if (board[i][j] == board[i][j+1]) {
+        if (board[i][j] == X) {
+          curX++;
+          // curO = 1;
+        }
+        else if (board[i][j] == O) {
+          curO++;
+        }
       }
     }
   }
-  // cout << "MaxX: " << MaxX << "\n";
-  // cout << "MaxO: " << MaxO << "\n";
+  cout << "MaxX: " << MaxX << "\n";
+  cout << "MaxO: " << MaxO << "\n";
   /* Checking for Vertical Win */
   for (int i = 0; i < BOARD_COLS; i++) {
     int curX = 1;

@@ -1,8 +1,6 @@
 #include "Piezas.h"
-#include <iostream>
 #include <vector>
 
-using std::cout;
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and
@@ -23,15 +21,9 @@ using std::cout;
  * specifies it is X's turn first
  **/
 Piezas::Piezas() {
-  // turn = X;
-  // std::vector<std::vector<Piece>> init_board(
-  //     BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
-  // board = init_board;
-
   turn = X;
   board = std::vector<std::vector<Piece>>(
       BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
-  // board = init_board;
 }
 
 /**
@@ -40,9 +32,9 @@ Piezas::Piezas() {
  **/
 void Piezas::reset() {
   turn = X;
-  std::vector<std::vector<Piece>> init_board(
-      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
-  board = init_board;
+  for (int i = 0; i < BOARD_ROWS; i++) {
+    board[i].resize(BOARD_COLS,Blank);
+  }
 }
 
 /**
@@ -143,13 +135,5 @@ Piece Piezas::gameState() {
       }
     }
   }
-
-  if (MaxO == MaxX) {
-    return Blank;
-  } else if (MaxX > MaxO) {
-    return X;
-  } else {
-    return O;
-  }
-  // return MaxX == MaxO ? Blank : (MaxX > MaxO ? X : O);
+  return MaxX == MaxO ? Blank : (MaxX > MaxO ? X : O);
 }

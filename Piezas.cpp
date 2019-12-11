@@ -23,10 +23,14 @@ using std::cout;
  * specifies it is X's turn first
  **/
 Piezas::Piezas() {
+  // turn = X;
+  // std::vector<std::vector<Piece>> init_board(
+  //     BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
+  // board = init_board;
+
   turn = X;
-  std::vector<std::vector<Piece>> init_board(
-      BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
-  board = init_board;
+  board = std::vector<std::vector<Piece>> (BOARD_ROWS, std::vector<Piece>(BOARD_COLS, Blank));
+  // board = init_board;
 }
 
 /**
@@ -88,6 +92,7 @@ Piece Piezas::gameState() {
   for (int i = 0; i < BOARD_ROWS; i++) {
     for (int j = 0; j < BOARD_COLS; j++) {
       if (board[i][j] == Blank) {
+        cout << "Blank Piece Found\n";
         return Invalid;
       }
     }
@@ -117,8 +122,8 @@ Piece Piezas::gameState() {
       }
     }
   }
-  cout << "MaxX: " << MaxX << "\n";
-  cout << "MaxO: " << MaxO << "\n";
+  // cout << "MaxX: " << MaxX << "\n";
+  // cout << "MaxO: " << MaxO << "\n";
   /* Checking for Vertical Win */
   for (int i = 0; i < BOARD_COLS; i++) {
     int curX = 1;
@@ -142,8 +147,8 @@ Piece Piezas::gameState() {
       }
     }
   }
-  cout << "MaxX: " << MaxX << "\n";
-  cout << "MaxO: " << MaxO << "\n";
+  // cout << "MaxX: " << MaxX << "\n";
+  // cout << "MaxO: " << MaxO << "\n";
   if (MaxO == MaxX) {
     return Blank;
   } else if (MaxX > MaxO) {

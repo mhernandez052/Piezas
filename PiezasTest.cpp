@@ -113,7 +113,7 @@ TEST(PiezasTest, dropPieceOutOfBoundsCol) {
 
 TEST(PiezasTest, checkOutOfBoundsTurnSkip) {
   Piezas Board;
-  Board.dropPiece(3);
+  Board.dropPiece(5);
   ASSERT_EQ(Board.dropPiece(2), O);
 }
 

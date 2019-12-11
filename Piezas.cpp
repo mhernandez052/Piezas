@@ -98,6 +98,7 @@ Piece Piezas::gameState() {
     }
   }
   /* Checking for Horizontal Win */
+  cout << "BS: " <<   board.size() << " [i]: " << board[0].size() << "\n";
   int MaxX = 1;
   int MaxO = 1;
   for (int i = 0; i < BOARD_ROWS; i++) {
@@ -115,10 +116,11 @@ Piece Piezas::gameState() {
       if (board[i][j] == board[i][j+1]) {
         if (board[i][j] == X) {
           curX++;
-          // curO = 1;
+          curO = 1;
         }
         else if (board[i][j] == O) {
           curO++;
+          curX = 1;
         }
       }
     }

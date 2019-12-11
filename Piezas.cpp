@@ -98,7 +98,6 @@ Piece Piezas::gameState() {
     }
   }
   /* Checking for Horizontal Win */
-  // cout << "BS: " <<   board.size() << " [i]: " << board[0].size() << "\n";
   int MaxX = 1;
   int MaxO = 1;
   for (int i = 0; i < BOARD_ROWS; i++) {
@@ -115,17 +114,13 @@ Piece Piezas::gameState() {
         }
       }
       if (curX > MaxX) {
-        // cout << "XMax Change I: " << i << " " << "J: " << j << "\n";
         MaxX = curX;
       }
       if (curO > MaxO) {
-        // cout << "OMax change I: " << i << " " << "J: " << j << "\n";
         MaxO = curO;
       }
     }
   }
-  cout << "HMaxX: " << MaxX << "\n";
-  cout << "HMaxO: " << MaxO << "\n";
   /* Checking for Vertical Win */
   for (int i = 0; i < BOARD_COLS; i++) {
     int curX = 1;
@@ -141,18 +136,14 @@ Piece Piezas::gameState() {
         }
       }
       if (curX > MaxX) {
-        // cout << "XMax Change I: " << i << " " << "J: " << j << "\n";
         MaxX = curX;
       }
       if (curO > MaxO) {
-        // cout << "OMax change I: " << i << " " << "J: " << j << "\n";
         MaxO = curO;
       }
     }
   }
 
-  cout << "VMaxX: " << MaxX << "\n";
-  cout << "VMaxO: " << MaxO << "\n";
   if (MaxO == MaxX) {
     return Blank;
   } else if (MaxX > MaxO) {

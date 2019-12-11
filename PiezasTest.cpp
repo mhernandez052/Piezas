@@ -242,11 +242,11 @@ TEST(PiezasTest, verticalWinXLength3) {
   Board.dropPiece(0);
   Board.dropPiece(2);
   Board.dropPiece(0);
-  Board.dropPiece(1);
-  Board.dropPiece(1);
   Board.dropPiece(2);
   Board.dropPiece(3);
   Board.dropPiece(3);
+  Board.dropPiece(1);
+  Board.dropPiece(1);
   Board.dropPiece(2);
   Board.dropPiece(3);
   ASSERT_EQ(Board.gameState(), X);

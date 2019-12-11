@@ -104,20 +104,23 @@ Piece Piezas::gameState() {
     int curX = 1;
     int curO = 1;
     for (int j = 0; j < BOARD_COLS - 1; j++) {
-      if (curO > MaxO) {
-        MaxO = curO;
-      }
       if (curX > MaxX) {
         MaxX = curX;
       }
-      if (board[i][j] == board[i][j + 1]) {
-        if (board[i][j] == X) {
-          curX++;
-          curO = 1;
-        } else if (board[i][j] == O) {
-          curO++;
-          curX = 1;
-        }
+      if (curO > MaxO) {
+        MaxO = curO;
+      }
+      if ((board[i][j] == board[i][j+1]) && board[i][j] == X) {
+        curX++;
+      }
+      else if (board[i][j] == X && board[i][j+1] == O) {
+        curX == 1;
+      }
+      if (board[i][j] == board[i][j+1] && board[i][j] == O) {
+        curO++;
+      }
+      else if (board[i][j] == O && board[i][j+1] == X) {
+        curX = 1;
       }
     }
   }

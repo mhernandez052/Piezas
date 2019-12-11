@@ -266,7 +266,7 @@ TEST(PiezasTest, horizontalWinOLength4) {
   Board.dropPiece(3);
   Board.dropPiece(2);
   Board.dropPiece(3);
-  ASSERT_EQ(Board.gameState(), X);
+  ASSERT_EQ(Board.gameState(), O);
 }
 
 TEST(PiezasTest, horizontalWinOLength3) {

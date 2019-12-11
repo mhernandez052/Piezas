@@ -103,7 +103,7 @@ Piece Piezas::gameState() {
   for (int i = 0; i < BOARD_ROWS; i++) {
     int curX = 1;
     int curO = 1;
-    for (int j = 0; j < BOARD_COLS - 1; j++) {
+    for (int j = 0; j < BOARD_COLS; j++) {
       if (curX > MaxX) {
         cout << "XMax Change I: " << i << " " << "J: " << j << "\n"; 
         MaxX = curX;
